@@ -225,7 +225,7 @@ I can't live without you, since you are The Sun`,
 								</div>
 								{/* <h1>{poem.title}</h1> */}
 								{/* <p className="">{poem.lines}</p> */}
-								<div className="h-[85%] p-5 poemText ellipses">
+								<div className="h-[85%] p-5">
 									<pre
 										className={clsx("text-[" + poem.color + "] text-[17px]")}
 									>
@@ -253,7 +253,7 @@ I can't live without you, since you are The Sun`,
 						className={clsx(
 							// "flex flex-col items-center justify-between text-center",
 							"text-center",
-							"p-8",
+							"py-8",
 							// "w-[100%] h-[100%]",
 							// "aspect-[9/12]",
 							"min-h-screen",
@@ -279,11 +279,12 @@ I can't live without you, since you are The Sun`,
 						</div>
 						{/* <h1>{poem.title}</h1> */}
 						{/* <p className="">{poem.lines}</p> */}
-						<div className="h-[85%] p-5">
+						<div className="h-[85%] py-5">
 							<pre
 								className={clsx(
 									"text-[" + selectedPoem.color + "] ",
-									"lg:text-[22px]"
+									"lg:text-[22px]",
+									"text-center"
 								)}
 							>
 								{selectedPoem.lines}
