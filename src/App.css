@@ -1,0 +1,102 @@
+html * {
+	/* font-size: 1em !important; */
+	/* color: #000 !important; */
+	font-family: Arial !important;
+	cursor: url("cursor.png"), auto !important;
+}
+body {
+	cursor: url("logo.svg"), auto !important;
+}
+
+::selection {
+	background: #ecadff; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+	background: #ecadff; /* Gecko Browsers */
+}
+
+/* #all { */
+/* box-shadow: inset 0 0 30px 0 rgb(0 0 0 / 0.5) !important; */
+/* } */
+
+.masked-overflow {
+	/* scroll bar width, for use in mask calculations */
+	--scrollbar-width: 8px;
+
+	/* mask fade distance, for use in mask calculations */
+	--mask-height: 32px;
+
+	/* If content exceeds height of container, overflow! */
+	overflow-y: auto;
+
+	/* Our height limit */
+	/* height: 300px; */
+
+	/* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+	padding-bottom: var(--mask-height);
+
+	/* Keep some space between content and scrollbar */
+	padding-right: 20px;
+
+	/* The CSS mask */
+
+	/* The content mask is a linear gradient from top to bottom */
+	--mask-image-content: linear-gradient(
+		to bottom,
+		transparent,
+		black var(--mask-height),
+		black calc(100% - var(--mask-height)),
+		transparent
+	);
+
+	/* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+	--mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+	/* The scrollbar mask is a black pixel */
+	--mask-image-scrollbar: linear-gradient(black, black);
+
+	/* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+	--mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+	/* Apply the mask image and mask size variables */
+	mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+	mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+	/* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+	mask-position: 0 0, 100% 0;
+
+	/* We don't repeat our mask images */
+	mask-repeat: no-repeat, no-repeat;
+}
+
+/* .poemText:after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	pointer-events: none;
+	top: 0;
+	background: linear-gradient(transparent 150px, white);
+} */
+
+/* .poemText:after {
+	content: "";
+	position: absolute;
+	top: 160px;
+	left: 0;
+	height: 40px;
+	width: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0), #000);
+} */
+
+/* .ellipses {
+	width: 400px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+} */
