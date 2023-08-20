@@ -19,7 +19,7 @@ function App() {
 	const poems = [
 		{
 			title: "My Sunshine",
-			color: "#000",
+			dark: true,
 			lines: `The first snow of winter
 Your freshness cleared the haze
 Through hail that crashed and days 
@@ -42,7 +42,7 @@ Your light was just a faze`,
 		},
 		{
 			title: "A (wo)man's best friend",
-			color: "#fff",
+			dark: false,
 			lines: `I used to be your everything
 But now you've closed the door.
 Came back with the young thing
@@ -74,7 +74,7 @@ and let myself subdue.`,
 		},
 		{
 			title: "Stormy",
-			color: "#000",
+			dark: true,
 			lines: `We always knew you belonged to the sky  
 
 -12/20/21`,
@@ -82,7 +82,7 @@ and let myself subdue.`,
 		},
 		{
 			title: "Sunkissed",
-			color: "#000",
+			dark: true,
 			lines: `The Moon empties and fills my cup
 It has one rule, keep looking up
 
@@ -152,7 +152,7 @@ I can't live without you, since you are The Sun`,
 							e.stopPropagation();
 							setSelectedPoem({
 								title: "From Luca, with Love",
-								color: "#fff",
+								dark: false,
 								lines: ``,
 								image: img5,
 							});
@@ -219,7 +219,12 @@ I can't live without you, since you are The Sun`,
 								)}
 							>
 								<div className="h-[15%] flex flex-col justify-center">
-									<h1 className={clsx("text-[27px] text-[" + poem.color + "]")}>
+									<h1
+										className={clsx(
+											"text-[27px]",
+											poem.dark ? "text-[black]" : "text-[white]"
+										)}
+									>
 										{poem.title}
 									</h1>
 								</div>
@@ -227,7 +232,10 @@ I can't live without you, since you are The Sun`,
 								{/* <p className="">{poem.lines}</p> */}
 								<div className="h-[85%] p-5">
 									<pre
-										className={clsx("text-[" + poem.color + "] text-[17px]")}
+										className={clsx(
+											poem.dark ? "text-[black]" : "text-[white]",
+											"text-[17px]"
+										)}
 									>
 										{poem.lines.split("\n").slice(0, 4).join("\n")}
 										{poem.lines.split("\n").length > 4 ? (
@@ -269,9 +277,8 @@ I can't live without you, since you are The Sun`,
 						<div className="h-[15%] flex flex-col justify-center">
 							<pre
 								className={clsx(
-									"text-[28px] lg:text-[32px] text-[" +
-										selectedPoem.color +
-										"] mb-4"
+									"text-[28px] lg:text-[32px] mb-4",
+									selectedPoem.dark ? "text-[black]" : "text-[white]"
 								)}
 							>
 								{selectedPoem.title}
