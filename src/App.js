@@ -6,6 +6,7 @@ import img1 from "./poem_pics/1.png";
 import img2 from "./poem_pics/2.png";
 import img3 from "./poem_pics/3.png";
 import img4 from "./poem_pics/4.png";
+import img5 from "./poem_pics/5.png";
 
 import "./App.css";
 
@@ -143,7 +144,21 @@ I can't live without you, since you are The Sun`,
 					{/* {loadedIn ? (
 						<h1 className="italic text-xl">Avery's Poetic Place</h1>
 					) : null} */}
-					<img src={logo} alt="" className="w-[80px] h-[80px]" />
+					<img
+						src={logo}
+						alt=""
+						className="w-[80px] h-[80px]"
+						onClick={(e) => {
+							e.stopPropagation();
+							setSelectedPoem({
+								title: "From Luca, with Love",
+								color: "#fff",
+								lines: ``,
+								image: img5,
+							});
+							scrollToTop();
+						}}
+					/>
 					<h1
 						className={clsx(
 							"pt-[48px] text-[30px] transition-all",
