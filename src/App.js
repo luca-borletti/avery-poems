@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { clsx } from "clsx";
 import logo from "./logo2.svg";
 
+import img0 from "./poem_pics/0.jpg";
 import img1 from "./poem_pics/1.png";
 import img2 from "./poem_pics/2.png";
 import img3 from "./poem_pics/3.png";
@@ -17,6 +18,29 @@ function App() {
 	const [selectedPoem, setSelectedPoem] = useState(null);
 
 	const poems = [
+		{
+			title: "Happy Six Months <3",
+			dark: false,
+			lines: `Gorgeous, funny, and a climber too
+
+…must be too good to be true.
+
+Generous, kind, and a lover of stew
+
+…must be too good to be true.
+
+Driven, communicative, and likes to screw ;)
+
+…must be too good to be true.
+
+So many things… so I'll no longer eschew…
+
+…I'm simply in love with you.
+
+- Luca`,
+			image: img0,
+			special: true,
+		},
 		{
 			title: "My Sunshine",
 			dark: true,
@@ -188,6 +212,7 @@ I can't live without you, since you are The Sun`,
 						"gap-y-[100px] gap-x-[80px]",
 						"lg:grid-cols-2",
 						"sm:grid-cols-2",
+						// "flex flex-col justify-center",
 						"px-10",
 						"py-10"
 					)}
@@ -213,7 +238,9 @@ I can't live without you, since you are The Sun`,
 									"rounded-lg",
 									"shadow hover:shadow-[] transition-all ease-in-out duration-250",
 									"aspect-[9/12]",
-									"hover:border-[10px] border-[#7D3C8A]"
+									"hover:border-[10px] border-[#7D3C8A]",
+									poem.special ? "w-100" : ""
+									// poem.special ? "brightness-50" : ""
 									// [0_35px_60px_-15px_rgba(0,0,0,0.3)]
 									// "h-[200px] w-[200px]"
 								)}
@@ -222,7 +249,8 @@ I can't live without you, since you are The Sun`,
 									<h1
 										className={clsx(
 											"text-[27px]",
-											poem.dark ? "text-[black]" : "text-[white]"
+											poem.dark ? "text-[black]" : "text-[white]",
+											poem.special ? "backdrop-blur-md rounded-lg p-3" : ""
 										)}
 									>
 										{poem.title}
@@ -231,19 +259,34 @@ I can't live without you, since you are The Sun`,
 								{/* <h1>{poem.title}</h1> */}
 								{/* <p className="">{poem.lines}</p> */}
 								<div className="h-[85%] p-5">
-									<pre
-										className={clsx(
-											poem.dark ? "text-[black]" : "text-[white]",
-											"text-[17px]"
-										)}
-									>
-										{poem.lines.split("\n").slice(0, 4).join("\n")}
-										{poem.lines.split("\n").length > 4 ? (
-											<span className="text-[30px]">{"\n..."}</span>
-										) : (
-											""
-										)}
-									</pre>
+									{!poem.special ? (
+										<pre
+											className={clsx(
+												poem.dark ? "text-[black]" : "text-[white]",
+												"text-[17px]",
+												// poem.special ? "bg-clip-content bg-white rounded-sm" : ""
+												poem.special ? "backdrop-blur-md rounded-lg p-3" : ""
+											)}
+										>
+											{poem.lines.split("\n").slice(0, 4).join("\n")}
+											{poem.lines.split("\n").length > 4 ? (
+												<span className="text-[40px]">{"\n⋮"}</span>
+											) : (
+												""
+											)}
+										</pre>
+									) : (
+										<pre
+											className={clsx(
+												poem.dark ? "text-[black]" : "text-[white]",
+												"text-[17px]",
+												// poem.special ? "bg-clip-content bg-white rounded-sm" : ""
+												poem.special ? "backdrop-blur-md rounded-lg p-3" : ""
+											)}
+										>
+											(click here to see poem)
+										</pre>
+									)}
 								</div>
 							</div>
 						);
@@ -278,7 +321,8 @@ I can't live without you, since you are The Sun`,
 							<pre
 								className={clsx(
 									"text-[28px] lg:text-[32px] mb-4",
-									selectedPoem.dark ? "text-[black]" : "text-[white]"
+									selectedPoem.dark ? "text-[black]" : "text-[white]",
+									selectedPoem.special ? "backdrop-blur-md rounded-lg p-3" : ""
 								)}
 							>
 								{selectedPoem.title}
@@ -291,7 +335,11 @@ I can't live without you, since you are The Sun`,
 								className={clsx(
 									"text-[" + selectedPoem.color + "] ",
 									"lg:text-[22px]",
-									"text-center"
+									"text-center",
+									selectedPoem.dark ? "text-[black]" : "text-[white]",
+									selectedPoem.special
+										? "backdrop-blur-md rounded-lg p-3 font-semibold"
+										: ""
 								)}
 							>
 								{selectedPoem.lines}
