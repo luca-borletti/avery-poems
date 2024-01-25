@@ -17,11 +17,10 @@ function App() {
 	var fadeIn = loadedIn ? "opacity-100" : "opacity-0";
 	const [selectedPoem, setSelectedPoem] = useState(null);
 
-	const poems = [
-		{
-			title: "Happy Six Months <3",
-			dark: false,
-			lines: `Gorgeous, funny, and a climber too
+	const sixMonthsEasterEgg = {
+		title: "Happy Six Months <3",
+		dark: false,
+		lines: `Gorgeous, funny, and a climber too
 
 …must be too good to be true.
 
@@ -38,9 +37,11 @@ So many things… so I'll no longer eschew…
 …I'm simply in love with you.
 
 - Luca`,
-			image: img0,
-			special: true,
-		},
+		image: img0,
+		special: true,
+	};
+
+	const poems = [
 		{
 			title: "My Sunshine",
 			dark: true,
@@ -190,7 +191,16 @@ I can't live without you, since you are The Sun`,
 							fadeIn
 						)}
 					>
-						very
+						ver
+						<span
+							onClick={(e) => {
+								e.stopPropagation();
+								setSelectedPoem(sixMonthsEasterEgg);
+								scrollToTop();
+							}}
+						>
+							y
+						</span>
 						<span
 							className={clsx(
 								"inline-block transition-all",
